@@ -19,11 +19,11 @@ public class TestSuite {
 				List<String> movieTitles = Arrays.asList("Les bronzes font du ski", "Ca tourne à Manhatan", 
 						"Les tontons flingueurs","High Fidelity", "Two days in Paris", "Tous les soleils",
 						"Les émotifs anonymes", "Le nom des gens", "Cars");
-				int[]priceCodes = {Movie.REGULAR, Movie.REGULAR, Movie.REGULAR,
-						Movie.REGULAR, Movie.REGULAR, Movie.NEW_RELEASE, Movie.NEW_RELEASE,
-						Movie.NEW_RELEASE,Movie.REGULAR, Movie.CHILDRENS};
+				Movie.Category[]priceCodes = {Movie.Category.REGULAR, Movie.Category.REGULAR, Movie.Category.REGULAR,
+						Movie.Category.REGULAR, Movie.Category.REGULAR, Movie.Category.NEW_RELEASE, Movie.Category.NEW_RELEASE,
+						Movie.Category.NEW_RELEASE,Movie.Category.REGULAR, Movie.Category.CHILDREN};
 				
-				List<Movie> movies = new ArrayList<Movie>();
+				List<Movie> movies = new ArrayList<>();
 						
 				int i = 0;
 				for(String title : movieTitles){
@@ -45,12 +45,12 @@ public class TestSuite {
 	}
 
 	@After
-	public void tearDown() throws Exception {
+	public void tearDown(){
 	}
 
 	@Test
 	public void test() {
-String res = "Rental Record for John Doe"+ "\n\t"+ "Les bronzes font du ski	2.0"+ "\n\t"+ "Ca tourne à Manhatan	3.5"
+		String res = "Rental Record for John Doe"+ "\n\t"+ "Les bronzes font du ski	2.0"+ "\n\t"+ "Ca tourne à Manhatan	3.5"
 		+ "\n\t"+ "Les tontons flingueurs	5.0" + "\n\t"+ "High Fidelity	2.0" + "\n\t"+ "Two days in Paris	3.5"
 		+ "\n\t"+ "Tous les soleils	12.0" + "\n\t"+ "Les émotifs anonymes	6.0" + "\n\t"+ "Le nom des gens	9.0"
 		+ "\n\t"+ "Cars	5.0"+ "\n"+ "Amount owed is 48.0" + "\n"+ "You earned 12 frequent renter points";
@@ -59,11 +59,19 @@ String res = "Rental Record for John Doe"+ "\n\t"+ "Les bronzes font du ski	2.0"
 	
 	private void initialStatementPrinting() throws Exception{
 		setUp();
-		System.out.println(johnDoe.statement());
+        System.out.println(johnDoe.htmlStatement());
+        tearDown();
+	}
+
+	private void htmlStatementPrinting() throws Exception{
+		setUp();
+        System.out.println(johnDoe.htmlStatement());
+        tearDown();
 	}
 	
 	public static void main(String[] args) throws Exception {
 		new TestSuite().initialStatementPrinting();
+		new TestSuite().htmlStatementPrinting();
 	}
 
 }
