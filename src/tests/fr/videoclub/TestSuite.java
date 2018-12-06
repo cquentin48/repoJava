@@ -19,9 +19,9 @@ public class TestSuite {
 				List<String> movieTitles = Arrays.asList("Les bronzes font du ski", "Ca tourne à Manhatan", 
 						"Les tontons flingueurs","High Fidelity", "Two days in Paris", "Tous les soleils",
 						"Les émotifs anonymes", "Le nom des gens", "Cars");
-				Movie.Category[]priceCodes = {Movie.Category.REGULAR, Movie.Category.REGULAR, Movie.Category.REGULAR,
-						Movie.Category.REGULAR, Movie.Category.REGULAR, Movie.Category.NEW_RELEASE, Movie.Category.NEW_RELEASE,
-						Movie.Category.NEW_RELEASE,Movie.Category.REGULAR, Movie.Category.CHILDREN};
+				MovieCategory[]priceCodes = {MovieCategory.REGULAR, MovieCategory.REGULAR, MovieCategory.REGULAR,
+						MovieCategory.REGULAR, MovieCategory.REGULAR, MovieCategory.NEW_RELEASE, MovieCategory.NEW_RELEASE,
+						MovieCategory.NEW_RELEASE, MovieCategory.REGULAR, MovieCategory.CHILDREN};
 				
 				List<Movie> movies = new ArrayList<>();
 						

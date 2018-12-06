@@ -53,14 +53,14 @@ public class Customer {
 
     public String htmlStatement() {
         String result = "<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=UTF-8\">";
-        result+= "<H1>Rentals for <EM>" + getName() + "</EM></ H1><P>\n";
-        for(Rental each : rentals) {
+        result += "<H1>Rentals for <EM>" + getName() + "</EM></ H1><P>\n";
+        for (Rental each : rentals) {
             //show figures for each rental
-            result += each.getMovie().getTitle()+ ": " +
+            result += each.getMovie().getTitle() + ": " +
                     String.valueOf(each.getCharge()) + "<BR>\n";
         }
         //add footer lines
-        result +=  "<P>You owe <EM>" + String.valueOf(getTotalCharges()) + "</EM><P>\n";
+        result += "<P>You owe <EM>" + String.valueOf(getTotalCharges()) + "</EM><P>\n";
         result += "On this rental you earned <EM>" +
                 String.valueOf(getTotalFrequentRenterPoints()) +
                 "</EM> frequent renter points<P>";
