@@ -1,40 +1,27 @@
 package fr.videoclub;
 
-public class TextStatement {
-    private final Customer customer;
+public class TextStatement extends Statement {
 
     public TextStatement(Customer customer) {
-        this.customer = customer;
+        super(customer);
     }
 
-    public String value() {
-        String result = headerString();
-
-        for (Rental rental : customer.getRentals()) {
-            // show figures for this rental
-            result += eachRentalString(rental);
-        }
-
-        // add footer lines
-        result = footerString(result);
-
-        return result;
-    }
-
-    private String footerString(String result) {
-        result += "Amount owed is " + String.valueOf(customer.getTotalCharges()) + "\n";
-        result += "You earned " + String.valueOf(customer.getTotalFrequentRenterPoints())
+    @Override
+    protected String footerString() {
+        String footer = "Amount owed is " + String.valueOf(customer.getTotalCharges()) + "\n";
+        footer += "You earned " + String.valueOf(customer.getTotalFrequentRenterPoints())
                 + " frequent renter points";
-
-        return result;
+        return footer;
     }
 
-    private String eachRentalString(Rental rental) {
+    @Override
+    protected String eachRentalString(Rental rental) {
         return "\t" + rental.getMovie().getTitle() + "\t"
                 + String.valueOf(rental.getCharge()) + "\n";
     }
 
-    private String headerString() {
+    @Override
+    protected String headerString() {
         return "Rental Record for " + customer.getName() + "\n";
     }
 }

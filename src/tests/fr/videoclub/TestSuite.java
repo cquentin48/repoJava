@@ -59,7 +59,7 @@ public class TestSuite {
 	
 	private void initialStatementPrinting() throws Exception{
 		setUp();
-        System.out.println(johnDoe.htmlStatement());
+        System.out.println(johnDoe.textStatement());
         tearDown();
 	}
 
