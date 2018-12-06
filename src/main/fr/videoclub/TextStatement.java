@@ -8,20 +8,36 @@ public class TextStatement extends Statement {
 
     @Override
     protected String footerString() {
-        String footer = "Amount owed is " + String.valueOf(customer.getTotalCharges()) + "\n";
-        footer += "You earned " + String.valueOf(customer.getTotalFrequentRenterPoints())
-                + " frequent renter points";
-        return footer;
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Amount owed is ");
+        stringBuilder.append(String.valueOf(customer.getTotalCharges()));
+        stringBuilder.append("\n");
+        stringBuilder.append("You earned ");
+        stringBuilder.append(String.valueOf(customer.getTotalFrequentRenterPoints()));
+        stringBuilder.append(" frequent renter points");
+
+        return new String(stringBuilder);
     }
 
     @Override
     protected String eachRentalString(Rental rental) {
-        return "\t" + rental.getMovie().getTitle() + "\t"
-                + String.valueOf(rental.getCharge()) + "\n";
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("\t");
+        stringBuilder.append(rental.getMovie().getTitle());
+        stringBuilder.append("\t");
+        stringBuilder.append(String.valueOf(rental.getCharge()));
+        stringBuilder.append("\n");
+        return new String(stringBuilder);
     }
 
     @Override
     protected String headerString() {
-        return "Rental Record for " + customer.getName() + "\n";
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append("Rental Record for ");
+        stringBuilder.append(customer.getName());
+        stringBuilder.append("\n");
+
+        return new String(stringBuilder);
     }
 }

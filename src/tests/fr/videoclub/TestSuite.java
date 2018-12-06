@@ -72,6 +72,24 @@ public class TestSuite {
 	public static void main(String[] args) throws Exception {
 		new TestSuite().initialStatementPrinting();
 		new TestSuite().htmlStatementPrinting();
+		new TestSuite().testHtml();
+	}
+
+	@Test
+	public void testHtml() {
+		String expectedHtml = "<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=UTF-8\"><H1>Rentals for <EM>John Doe</EM></ H1><P>\n" +
+				"Les bronzes font du ski: 2.0<BR>\n" +
+				"Ca tourne à Manhatan: 3.5<BR>\n" +
+				"Les tontons flingueurs: 5.0<BR>\n" +
+				"High Fidelity: 2.0<BR>\n" +
+				"Two days in Paris: 3.5<BR>\n" +
+				"Tous les soleils: 12.0<BR>\n" +
+				"Les émotifs anonymes: 6.0<BR>\n" +
+				"Le nom des gens: 9.0<BR>\n" +
+				"Cars: 5.0<BR>\n" +
+				"<P>You owe <EM>48.0</EM><P>\n" +
+				"On this rental you earned <EM>12</EM> frequent renter points<P>";
+		assertEquals("Html Statement Broken", expectedHtml, johnDoe.htmlStatement());
 	}
 
 }
