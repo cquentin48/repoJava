@@ -3,6 +3,7 @@ package fr.videoclub;
 import java.util.*;
 
 public class Customer {
+
     private String name;
     private List<Rental> rentals = new ArrayList<Rental>();
 
@@ -11,41 +12,28 @@ public class Customer {
     }
 
     public void addRental(Rental arg) {
-        rentals.add(arg);
+        getRentals().add(arg);
     }
 
     public String getName() {
         return name;
     }
 
-    public String statement() {
-        String result = "Rental Record for " + getName() + "\n";
-        for (Rental rental : rentals) {
-
-            // show figures for this rental
-            result += "\t" + rental.getMovie().getTitle() + "\t"
-                    + String.valueOf(rental.getCharge()) + "\n";
-
-        }
-        // add footer lines
-        result += "Amount owed is " + String.valueOf(getTotalCharges()) + "\n";
-        result += "You earned " + String.valueOf(getTotalFrequentRenterPoints())
-                + " frequent renter points";
-
-        return result;
+    public String textStatement() {
+        return new TextStatement(this).value();
     }
 
-    private double getTotalCharges() {
+    public double getTotalCharges() {
         double result = 0;
-        for (Rental rental : rentals) {
+        for (Rental rental : getRentals()) {
             result += rental.getCharge();
         }
         return result;
     }
 
-    private int getTotalFrequentRenterPoints() {
+    public int getTotalFrequentRenterPoints() {
         int result = 0;
-        for (Rental rental : rentals) {
+        for (Rental rental : getRentals()) {
             result += rental.getFrequentRenterPoints();
         }
         return result;
@@ -54,7 +42,7 @@ public class Customer {
     public String htmlStatement() {
         String result = "<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=UTF-8\">";
         result += "<H1>Rentals for <EM>" + getName() + "</EM></ H1><P>\n";
-        for (Rental each : rentals) {
+        for (Rental each : getRentals()) {
             //show figures for each rental
             result += each.getMovie().getTitle() + ": " +
                     String.valueOf(each.getCharge()) + "<BR>\n";
@@ -65,5 +53,13 @@ public class Customer {
                 String.valueOf(getTotalFrequentRenterPoints()) +
                 "</EM> frequent renter points<P>";
         return result;
+    }
+
+    public List<Rental> getRentals() {
+        return rentals;
+    }
+
+    public void setRentals(List<Rental> rentals) {
+        this.rentals = rentals;
     }
 }

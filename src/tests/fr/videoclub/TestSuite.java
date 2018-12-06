@@ -54,7 +54,7 @@ public class TestSuite {
 		+ "\n\t"+ "Les tontons flingueurs	5.0" + "\n\t"+ "High Fidelity	2.0" + "\n\t"+ "Two days in Paris	3.5"
 		+ "\n\t"+ "Tous les soleils	12.0" + "\n\t"+ "Les émotifs anonymes	6.0" + "\n\t"+ "Le nom des gens	9.0"
 		+ "\n\t"+ "Cars	5.0"+ "\n"+ "Amount owed is 48.0" + "\n"+ "You earned 12 frequent renter points";
-		assertEquals("Statement broken", res, johnDoe.statement());
+		assertEquals("Statement broken", res, johnDoe.textStatement());
 	}
 	
 	private void initialStatementPrinting() throws Exception{
